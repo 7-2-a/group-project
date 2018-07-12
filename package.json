@@ -1,7 +1,7 @@
 {
   "name": "deploy-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "DEVELOPMENT * Open 2 CLI windows, 1 for your server & 1 for your client 1. *cd group-project* 2. *npm install*  3. *npm start* 4. *cd group-project/client* 5. *npm install* 6. *npm start*",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,5 +15,14 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7-2-a/group-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/7-2-a/group-project/issues"
+  },
+  "homepage": "https://github.com/7-2-a/group-project#readme"
 }
