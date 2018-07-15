@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Home from './views/Home';
+import Login from './views/Login';
 import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Index = () => (
+  <Router>
+    <div>
+      <Route exact path="/" component={Home} />
+      <Route path="/Login" component={Login} />
+    </div>
+  </Router>
+)
+
+ReactDOM.render(<Index />,
+document.getElementById('root'));
 registerServiceWorker();
