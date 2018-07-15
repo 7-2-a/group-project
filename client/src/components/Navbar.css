@@ -1,0 +1,15 @@
+.Navbar{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: pink;
+  text-align: center;
+}
+
+.Title{
+  text-align: center;
+  font-size: 300px;
+  color: #8B008B;
+  font: 220px 'Sansita One';
+  text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
+}
