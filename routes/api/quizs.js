@@ -3,9 +3,7 @@ const router = express.Router();
 
 //Quiz Model
 const Quiz = require('../../models/Quiz');
-const Short = require('../../models/ShortQuestion');
-const Multiple = require('../../models/MultipleQuestion');
-const TrueFalse = require('../../models/TrueFalseQuestion');
+
 
 // @GET api/quizs
 // @desc Get All Quizs

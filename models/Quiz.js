@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const AnswerSchema = new Schema({
-  text: String,
-  required: true
-});
-
-const QuestionSchema = new Schema ({
-  question: {
-    type: String,
-    required: true
-  },
-  answer: AnswerSchema,
-  answerprompt: [AnswerSchema]
-
-});
-
 // Quiz Schema
 const QuizSchema = new Schema({
    title: {
@@ -26,7 +11,7 @@ const QuizSchema = new Schema({
      type: Date,
      default: Date.now
    },
-   questions: [questionSchema]
+   questions: Array
 });
 
 //if we need to add to our schema later
