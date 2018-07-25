@@ -8,7 +8,7 @@ const QuizList = (/*{QuizName}, {QuizDescription}, {QuizLink}*/) => (
   <div className="QuizList">
   <div id="QuizName">Name </div>
   <div id="QuizDescription">Description </div>
-  <div id="QuizLink">Take quiz </div>
+  <div id="QuizLink" >Take quiz </div>
 </div>
   </div>
 )
