@@ -6,7 +6,7 @@ const QuizSchema = new Schema({
    title: {
      type: String,
      required: true
-   },
+   },//TODO userID type: string
    date: {
      type: Date,
      default: Date.now
