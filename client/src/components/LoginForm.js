@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./LoginForm.css";
 
 
 class LoginForm extends Component {
@@ -27,6 +28,7 @@ class LoginForm extends Component {
       }
       render(){
           return(
+            <div id="container">
               <div className="login">
               <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="name" /><br/>
@@ -37,6 +39,7 @@ class LoginForm extends Component {
             <button block type="submit">Sign up</button>
             </form>
                 </div>
+            </div>
           )
       }
   }
