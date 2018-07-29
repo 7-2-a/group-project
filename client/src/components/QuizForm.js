@@ -63,14 +63,14 @@ const QuizArray = [
       return (
         <div>
           <div id="titleForm">
-          <h2>Create Quiz</h2>
+          <h2 id="titles">Create Quiz</h2>
           <input type="text" ref="title" placeholder="title" /><br/>
         </div>
           <div className="grid">
    
           <form onSubmit={this.handleSubmit}>
             <div className="col-2-3">
-            <h1>Question</h1>
+            <h1 id="titles">Question</h1>
 
             <input type="text" ref="question" placeholder="question" /><br/>
             <input type="text" ref="answer" placeholder="answer" /><br/>
@@ -83,7 +83,7 @@ const QuizArray = [
           </div>  
           </form>
           <div className="col-1-3">
-          <h2>Existing Questions</h2>
+          <h2 id="titles">Existing Questions</h2>
           <ul>
             {Quiz.map((Quiz) =>
             <li> {` ${Quiz.question} ${Quiz.answer} ${Quiz.choiceA} ${Quiz.choiceB} ${Quiz.choiceC} ${Quiz.choiceD} `}</li>
