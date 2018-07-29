@@ -15,18 +15,13 @@ height: 90%;
 padding: 20px;
 }
 
-#QuizName{
+#QuizTitle{
   font-size: 80px;
   text-align: left;
   color: grey;
   width: 50%;
 }
 
-#QuizDescription{
-  text-align: left;
-  width: 50%;
-  font-size: 30px;
-}
 
 #QuizLink{
   text-align: right;
