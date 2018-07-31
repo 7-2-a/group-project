@@ -1,21 +1,21 @@
 import React, {Component} from "react";
 import "./QuizForm.css";
+import { button } from "reactstrap";
 
-const QuizQuestionArray = [ ];
-const QuizTest = {
+
+const QuestionArray = [];
+const Quiz = {
   title: {},
-  QuizQuestions: []
-}
-//changed questions to QuizQuestions..
-
+  Questions: QuestionArray
+};
 
   class QuizForm extends Component {
 
     constructor() {
       super();
       this.state = {
-        Quiz: QuizTest,
-        QuizQuestions: QuizQuestionArray
+        Questions: QuestionArray,
+        Quiz: Quiz
       };
       this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -23,7 +23,8 @@ const QuizTest = {
     handleSubmit(e) {
       e.preventDefault();
       const
-      { QuizQuestions } = this.state,
+      { Questions, Quiz } = this.state,
+      //{ Quiz } = this.state,
       title = this.refs.title.value,
       question = this.refs.question.value,
       answer = this.refs.answer.value,
@@ -32,18 +33,21 @@ const QuizTest = {
       choiceC = this.refs.choiceC.value,
       choiceD = this.refs.choiceD.value
       this.setState({
-        Quiz:{
-          title: title,
-          QuizQuestions:[...QuizQuestions, {
-          //title,
+        Quiz: {
+          tile: title,
+          Questions: Questions
+        },
+
+        Questions: [...Questions, {
+
           question,
           answer,
           choiceA,
           choiceB,
           choiceC,
           choiceD
-        }]
-      }
+
+      }]
       }, () => {
         //this.refs.title.value = '';
         this.refs.question.value = '';
@@ -55,23 +59,22 @@ const QuizTest = {
       });
     }
 
-
     render() {
-      const { QuizQuestions } = this.state;
-      const { Quiz } = this.state;
+      const { Questions, Quiz } = this.state;
+      //const { Quiz } = this.state;
       console.log('message', Quiz);
-
+      console.log('message', Questions);
       return (
         <div>
           <div id="titleForm">
-          <h2 id="titles">Create Quiz</h2>
+          <h2>Create Quiz</h2>
           <input type="text" ref="title" placeholder="title" /><br/>
         </div>
           <div className="grid">
 
           <form onSubmit={this.handleSubmit}>
             <div className="col-2-3">
-            <h1 id="titles">Question</h1>
+            <h1>Question</h1>
 
             <input type="text" ref="question" placeholder="question" /><br/>
             <input type="text" ref="answer" placeholder="answer" /><br/>
@@ -80,26 +83,23 @@ const QuizTest = {
             <input type="text" ref="choiceC" placeholder="choiceC" /><br/>
             <input type="text" ref="choiceD" placeholder="choiceD" /><br/>
 
-            <button  type="submit">Add Question to Quiz</button>
+            <button block type="submit">Add Question to Quiz</button>
           </div>
           </form>
           <div className="col-1-3">
-          <h2 id="titles">Existing Questions</h2>
+          <h2>Existing Questions</h2>
           <ul>
-    {QuizQuestions.map((i) =>
-    <li>
+            {Questions.map((Q) =>
+            <li> Question:{` ${Q.question} `}<br></br>
+                 Answer:{` ${Q.answer} `}<br></br>
+                 Choices: A){` ${Q.choiceA} `}
+                          B){` ${Q.choiceB} `}
+                          C){` ${Q.choiceC} `}
+                          D){` ${Q.choiceD} `}
+            </li>
 
-      Question: {`${i.questions}`}<br></br>
-      Answer:{`${i.answer}`},<br></br>
-      Choices:{`${i.choiceA}`},
-      {`${i.choiceB}`},
-      {`${i.choiceC}`},
-      {`${i.choiceD}`}<br></br>
-      - - - - - - - - - -
-    </li>
-
-    )}
-  </ul>
+            )}
+          </ul>
           </div>
           </div>
 
