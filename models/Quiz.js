@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Schema
+// Quiz Schema
 const QuizSchema = new Schema({
    title: {
      type: String,
      required: true
-   },
+   },//TODO userID type: string
    date: {
      type: Date,
      default: Date.now
-   }
+   },
+   questions: Array
 });
 
 //if we need to add to our schema later

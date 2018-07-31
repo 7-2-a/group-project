@@ -4,6 +4,7 @@ const router = express.Router();
 //Quiz Model
 const Quiz = require('../../models/Quiz');
 
+
 // @GET api/quizs
 // @desc Get All Quizs
 // @access  Public
@@ -18,7 +19,8 @@ router.get('/', (req, res) => {
 // @access  Public
 router.post('/', (req, res) => {
   const newQuiz = new Quiz ({
-    title: req.body.title
+    title: req.body.title,
+    questions: [req.body.questions]
   })
 
   newQuiz.save().then(quiz => res.json(quiz));
