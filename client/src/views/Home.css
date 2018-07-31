@@ -2,7 +2,8 @@
   text-align: center;
   border:solid 2px black round;
 }
-a:link, a:visted {
-  color: #F159FF;
-  font-size: 23px;
+#glyhome{
+  font-size: 45px;
+  color: #435155;
+  padding: 10px;
 }

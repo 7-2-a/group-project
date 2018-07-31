@@ -50,8 +50,8 @@ button {
 h2{
   text-align: center;
 }
-
-#titles{
-  font: 45px 'Sansita One';
+.Titles{
+  font-family:'VT323', monospace;
   color: #F159FF;
+  font-size: 32px;
 }

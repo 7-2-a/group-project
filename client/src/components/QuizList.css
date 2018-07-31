@@ -2,7 +2,7 @@
 margin: 64px auto;
 width: 60%;
 height: 12%;
-background-color: #6699f6;
+background-color: ;
 text-align: center;
 border: 0.25px solid;
 border-radius: 6px;
@@ -17,14 +17,15 @@ padding: 20px;
 opacity: 0.9;
 }
 
-#QuizTitle{
+.QuizTitle {
   font-size: 80px;
+  font-family: 'VT323', monospace;
   text-align: left;
-  color: #F159FF;
+  color: #6699f6;
   width: 50%;
 }
 
 
-#QuizLink{
+.QuizLink{
   text-align: right;
 }

@@ -67,14 +67,14 @@ const Quiz = {
       return (
         <div>
           <div id="titleForm">
-          <h2>Create Quiz</h2>
+          <h2 className="Titles">Create Quiz</h2>
           <input type="text" ref="title" placeholder="title" /><br/>
         </div>
           <div className="grid">
 
           <form onSubmit={this.handleSubmit}>
             <div className="col-2-3">
-            <h1>Question</h1>
+            <h2 className="Titles">Question</h2>
 
             <input type="text" ref="question" placeholder="question" /><br/>
             <input type="text" ref="answer" placeholder="answer" /><br/>
@@ -83,11 +83,11 @@ const Quiz = {
             <input type="text" ref="choiceC" placeholder="choiceC" /><br/>
             <input type="text" ref="choiceD" placeholder="choiceD" /><br/>
 
-            <button block type="submit">Add Question to Quiz</button>
+            <button className="Titles" type="submit">+</button>
           </div>
-          </form>
+        </form>
           <div className="col-1-3">
-          <h2>Existing Questions</h2>
+          <h2 className="Titles">Existing Questions</h2>
           <ul>
             {Questions.map((Q) =>
             <li> Question:{` ${Q.question} `}<br></br>
