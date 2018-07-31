@@ -6,8 +6,8 @@ import "./QuizList.css";
 const QuizList = (/*{QuizName}, {QuizLink}*/) => (
   <div className="QuizListContainer">
   <div className="QuizList">
-  <div id="QuizTitle">Title </div>
-  <div id="QuizLink" >Take quiz </div>
+  <div className="QuizTitle">Title </div>
+  <div className="QuizLink" >Take quiz </div>
 </div>
   </div>
 )
