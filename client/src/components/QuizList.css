@@ -1,6 +1,6 @@
 .QuizListContainer{
 margin: 64px auto;
-width: 60%;
+width: 20%;
 height: 12%;
 background-color: ;
 text-align: center;
@@ -20,12 +20,12 @@ opacity: 0.9;
 .QuizTitle {
   font-size: 80px;
   font-family: 'VT323', monospace;
-  text-align: left;
-  color: #6699f6;
-  width: 50%;
+
+  color: #F159FF;
+  width: 100%;
 }
 
 
 .QuizLink{
-  text-align: right;
+
 }
