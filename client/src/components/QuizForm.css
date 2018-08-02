@@ -20,7 +20,7 @@
   width: 33.33%;
   font-size: 15px;
 }
-form{
+.Form{
   text-align: center;
   padding: 25px;
 }
@@ -35,6 +35,7 @@ input{
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
+  font-family: bold;
 }
 button {
   background: #F159FF;
@@ -43,6 +44,9 @@ button {
   box-sizing: border-box;
   border-radius: 30px;
 }
+placeholder[type='text']{
+  font-family: bold;
+}
 
 h2{
   text-align: center;
@@ -50,5 +54,5 @@ h2{
 .Titles{
   font-family:'VT323', monospace;
   color: #F159FF;
-  font-size: 32px;
+  font-size: 45px;
 }
