@@ -81,6 +81,7 @@ class QuizForm extends React.Component {
             </div>
             </div>
         )
+
     }
 }
 export default QuizForm
