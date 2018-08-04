@@ -1,0 +1,16 @@
+.quizContainer{
+  text-align: center;
+
+}
+
+.Qname{
+  font-size: 45px;
+  font-family: 'Monoton', cursive;
+
+}
+.Question{
+  font-size: 22px;
+}
+form{
+  color:  #F159FF;
+}

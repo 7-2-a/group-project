@@ -1,102 +1,87 @@
-import React, {Component} from "react";
+import React from 'react';
+import axios from 'axios';
 import "./QuizForm.css";
 
+const test = [];
 
-
-const QuizArray = [
-  {
-      title: '',
-      question: '',
-      answer: '',
-      choiceA: '',
-      choiceB: '',
-      choiceC: '',
-      choiceD: '',
+class QuizForm extends React.Component {
+    setValue(e) {
+        this.setState({[e.target.name]: e.target.value})
     }
-  ];
-
-  class QuizForm extends Component {
-
-    constructor() {
-      super();
-      this.state = {
-        Quiz: QuizArray
-      };
-      this.handleSubmit = this.handleSubmit.bind(this);
+    createQuizQuestion() {
+        let formDetails = this.state;
+        test.push(formDetails);
+        }
+    createTest() {
+      let Quiz = {
+        title: this.state.title,
+        questions: test
+      }
+      axios.post('/api/quizs', {
+        title: Quiz.title,
+        questions: Quiz.questions
+      })
+        .then(function (response) {
+          console.log(response)
+        })
+        .then(function(error) {
+          console.log(error)
+        })
     }
-
-    handleSubmit(e) {
-      e.preventDefault();
-      const
-      { Quiz } = this.state,
-      title = this.refs.title.value,
-      question = this.refs.question.value,
-      answer = this.refs.answer.value,
-      choiceA = this.refs.choiceA.value,
-      choiceB = this.refs.choiceB.value,
-      choiceC = this.refs.choiceC.value,
-      choiceD = this.refs.choiceD.value
-      this.setState({
-        Quiz: [...Quiz, {
-          title,
-          question,
-          answer,
-          choiceA,
-          choiceB,
-          choiceC,
-          choiceD
-        }]
-      }, () => {
-        this.refs.title.value = '';
-        this.refs.question.value = '';
-        this.refs.answer.value = '';
-        this.refs.choiceA.value = '';
-        this.refs.choiceB.value = '';
-        this.refs.choiceC.value = '';
-        this.refs.choiceD.value = '';
-      });
-    }
-
     render() {
-      const { Quiz } = this.state;
-      console.log('message',this.state.Quiz);
-      return (
-        <div>
-          <div id="titleForm">
-          <h2 id="titles">Create Quiz</h2>
-          <input type="text" ref="title" placeholder="title" /><br/>
-        </div>
-          <div className="grid">
-   
-          <form onSubmit={this.handleSubmit}>
-            <div className="col-2-3">
-            <h1 id="titles">Question</h1>
+        return (
+            <div>
+              <div id="titleForm">
+                <h2 className="Titles">Create Quiz</h2>
+                  <input placeholder="title" name="title" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div id="grid">
+                <div className="Form">
+              <div className="col-2-3">
+              <h2 className="Titles">Question</h2>
+              <div>
+                  <input placeholder="question" name="question" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div>
+                  <input placeholder="answer" name="answer" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div>
+                  <input placeholder="opt1" name="opt1" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div>
+                  <input placeholder="opt2" name="opt2" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div>
+                  <input placeholder="opt3" name="opt3" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div>
+                  <input placeholder="opt4" name="opt4" onChange={(e) => this.setValue(e)} />
+              </div>
+              <div>
+                  <button onClick={() => this.createQuizQuestion()}>Add Question</button>
+                  <button onClick={() => this.createTest()}>Add Test</button>
+              </div>
+            </div>
+          </div>
 
-            <input type="text" ref="question" placeholder="question" /><br/>
-            <input type="text" ref="answer" placeholder="answer" /><br/>
-            <input type="text" ref="choiceA" placeholder="choiceA" /><br/>
-            <input type="text" ref="choiceB" placeholder="choiceB" /><br/>
-            <input type="text" ref="choiceC" placeholder="choiceC" /><br/>
-            <input type="text" ref="choiceD" placeholder="choiceD" /><br/>
-
-            <button block type="submit">Add Question to Quiz</button>
-          </div>  
-          </form>
-          <div className="col-1-3">
-          <h2 id="titles">Existing Questions</h2>
-          <ul>
-            {Quiz.map((Quiz) =>
-            <li> {` ${Quiz.question} ${Quiz.answer} ${Quiz.choiceA} ${Quiz.choiceB} ${Quiz.choiceC} ${Quiz.choiceD} `}</li>
-
+            <div className="col-1-3">
+            <h2 className="Titles">Existing Questions</h2>
+            <ul>
+              {test.map((Q) =>
+              <li> Question:{` ${Q.question} `}<br></br>
+                   Answer:{` ${Q.answer} `}<br></br>
+                   Choices: A){` ${Q.opt1} `}
+                            B){` ${Q.opt2} `}
+                            C){` ${Q.opt3} `}
+                            D){` ${Q.opt4} `}
+              </li>
             )}
           </ul>
-          </div>
-          </div>
-          
-        
-        </div>
-      )
-    }
-  }
+            </div>
+            </div>
+            </div>
+        )
 
-export default QuizForm;
+    }
+}
+export default QuizForm

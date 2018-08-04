@@ -8,8 +8,8 @@
 .Title{
   text-align: center;
   font-size: 300px;
-  color: #8B008B;
-  font: 220px 'Sansita One';
+  color: #F159FF;
+  font: 220px 'Monoton', cursive;
   text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
 }
 .MakeQuiz{
@@ -19,6 +19,6 @@
 
 #gly{
   font-size: 30px;
-  color: #8B008B;
-  padding: 10px;
+  color: #435155;
+  padding: 15px 30px 0px 15px;
 }
