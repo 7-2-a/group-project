@@ -26,6 +26,11 @@ router.post('/', (req, res) => {
   newQuiz.save().then(quiz => res.json(quiz));
 });
 
+router.get('/:id', (req, res) => {
+  Quiz.find({_id: req.params.id})
+   .sort({ date: -1 })
+   .then(quiz => res.json(quiz))
+});
 // @DELETE api/quizs/:id
 // @desc  Delete A Quiz
 // @access  Public

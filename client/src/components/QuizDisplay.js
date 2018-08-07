@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import _ from 'lodash';
 
+
 class Data extends Component {
   constructor(props) {
    super(props);
@@ -30,7 +31,7 @@ class Data extends Component {
    console.log(this.state.array);
    return(
      <div>
-       <h3>tests</h3>
+       <h3>Choose a Quiz</h3>
        <ul className="list-group">
           {this.rendertests()}
        </ul>
@@ -43,18 +44,21 @@ class Data extends Component {
    return _.map(this.state.array, test => {
      return (
        <li className="list-group-item" key={test._id}>
+           <a href={`/ViewQuiz?id=${test._id}`}>
            {test.title}
+           </a>
            {test.date}
            <ul className="list-group">
 
-              {this.renderIngredients(test)}
+
            </ul>
        </li>
      );
    });
  }
-
- renderIngredients(test) {
+ //puth this script at line 50 to render the quiz questions
+//{this.renderQuestions(test)}
+ renderQuestions(test) {
 
     return _.map(test.questions, quiz => {
 
