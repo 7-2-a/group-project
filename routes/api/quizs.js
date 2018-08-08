@@ -40,5 +40,39 @@ router.delete('/:id', (req, res) => {
     .catch(err => res.status(404).json({success: false}));
 });
 
+router.put('/:id', (req, res) => {
+  //console.log(req.params.id);
+    Quiz.findById(req.params.id, (err, quiz) => {
+      console.log(quiz);
+      console.log(err);
+        if(err) {
+            res.send(err)
+        } else {
+        let items = quiz.questions[0];
+        //console.log(items);
+        //let matching = items.filter((item => item.question === req.body.question))
+        let nonMatching = items.filter((item => item.question != req.body.originalQuestion))
+        //console.log(nonMatching)
+        let newQuestion = {
+          question: req.body.question,
+          answer: req.body.answer,
+          opt1: req.body.opt1,
+          opt2: req.body.opt2,
+          opt3: req.body.opt3,
+          opt4: req.body.opt4
+        }
+
+        nonMatching.push(newQuestion);
+        //console.log(quiz);
+        quiz.questions = [nonMatching];
+        quiz.save((err) => {res.end()})
+
+
+
+        }
+
+    })
+})
+
 
 module.exports = router;

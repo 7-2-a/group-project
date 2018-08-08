@@ -48,6 +48,20 @@ class Data extends Component {
            {test.title}
            </a>
            {test.date}
+           <button
+                    className="remove-btn"
+                    color="danger"
+                    size="sm"
+                    onClick={() => {
+                      axios.delete(`/api/quizs/${test._id}`).then((res) => {
+                        console.log(res);
+                      }).catch((err) => {
+                        console.log(err)
+                      }).then(() => { window.location.reload();
+                      })
+                    }}
+                  >&times;</button>
+                <a href={`/UpdateQuiz?id=${test._id}`}><button>Update</button></a>
            <ul className="list-group">
 
 
