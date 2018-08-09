@@ -1,27 +1,20 @@
+//index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './views/App';
-import Login from './views/Login';
-import MakeQuiz from './views/MakeQuiz';
-import ViewQuiz from './views/ViewQuiz';
-import './index.css';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter as Router, Route} from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
+import reducers from './reducers';
 
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
-
-const Index = () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={Home} />
-      <Route path="/Login" component={Login} />
-      <Route path="/MakeQuiz" component={MakeQuiz} />
-      <Route path="/ViewQuiz" component={ViewQuiz} />
-    </div>
-  </Router>
-)
-
-ReactDOM.render(<Index />,
-document.getElementById('root'));
+//Refactored for cleaner code
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();

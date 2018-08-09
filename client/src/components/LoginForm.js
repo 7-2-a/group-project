@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FbLoginButton from './FbLoginButton';
 import "./LoginForm.css";
 
 
@@ -36,6 +37,7 @@ class LoginForm extends Component {
             <input type="text" placeholder="password" /><br/>
             <button type="Login">Login</button>
             <button type="SignUp">Sign up</button>
+            <FbLoginButton />
             </form>
                 </div>
 
