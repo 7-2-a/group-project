@@ -9,6 +9,7 @@ import Login from './views/Login';
 import MakeQuiz from './views/MakeQuiz';
 import ViewQuiz from './views/ViewQuiz';
 import Dashboard from './views/Dashboard';
+import UpdateQuiz from './views/UpdateQuiz';
 import './index.css';
 
 
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/MakeQuiz" component={MakeQuiz} />
             <Route path="/ViewQuiz" component={ViewQuiz} />
             <Route path="/Dashboard" component={Dashboard} />
+            <Route path="/UpdateQuiz" component={UpdateQuiz} />
           </div>
         </Router>
       </div>

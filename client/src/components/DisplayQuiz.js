@@ -38,9 +38,9 @@ state = {}
                    <p className="Question">{q.question}?</p>
                    <ul>
                     <div className="options"><label>{q.opt1}<input className="opt1" value="" type="radio" /*checked={this.state.selectedOption === 'opt1'}*//></label></div><br/>
-                    <div className="options"><label>{q.opt1}<input className="opt2" value="" type="radio"/></label></div><br/>
-                    <div className="options"><label>{q.opt1}<input className="opt3" value="" type="radio"/></label></div><br/>
-                    <div className="options"><label>{q.opt1}<input className="opt4" value="" type="radio"/></label></div><br/>
+                    <div className="options"><label>{q.opt2}<input className="opt2" value="" type="radio"/></label></div><br/>
+                    <div className="options"><label>{q.opt3}<input className="opt3" value="" type="radio"/></label></div><br/>
+                    <div className="options"><label>{q.opt4}<input className="opt4" value="" type="radio"/></label></div><br/>
                    </ul>
                  </div>
                ))}
