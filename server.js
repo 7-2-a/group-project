@@ -30,7 +30,7 @@ app.use(passport.session());
 require('./routes/api/authRoutes')(app);
 
 // PRODUCTION ONLY
-//app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // app middleware
 app.use(bodyParser.json());
