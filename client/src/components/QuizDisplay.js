@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import _ from 'lodash';
+import "./QuizDisplay.css";
 
 
 class Data extends Component {
@@ -31,8 +32,7 @@ class Data extends Component {
    console.log(this.state.array);
    return(
      <div>
-       <h3>Choose a Quiz</h3>
-       <ul className="list-group">
+       <ul className="list-group" id="listOfQuiz">
           {this.rendertests()}
        </ul>
      </div>
@@ -43,15 +43,17 @@ class Data extends Component {
    console.log(this.state.array);
    return _.map(this.state.array, test => {
      return (
-       <li className="list-group-item" key={test._id}>
-           <a href={`/ViewQuiz?id=${test._id}`}>
+       <div className="col-1-3">
+       <li className="list-group-item" id="items" key={test._id}>
+           <a className="link" href={`/ViewQuiz?id=${test._id}`}>
            {test.title}
-           </a>
-           {test.date}
-           <button
-                    className="remove-btn"
+         </a>
+           <p className="date">{test.date}</p>
+             <a href={`/UpdateQuiz?id=${test._id}`}><button id="btn2">Update</button></a>
+           <button id="btn"
+                    /*className="remove-btn"
                     color="danger"
-                    size="sm"
+                    size="sm"*/
                     onClick={() => {
                       axios.delete(`/api/quizs/${test._id}`).then((res) => {
                         console.log(res);
@@ -61,12 +63,12 @@ class Data extends Component {
                       })
                     }}
                   >&times;</button>
-                <a href={`/UpdateQuiz?id=${test._id}`}><button>Update</button></a>
-           <ul className="list-group">
+           <ul className="list-group" >
 
 
            </ul>
        </li>
+     </div>
      );
    });
  }

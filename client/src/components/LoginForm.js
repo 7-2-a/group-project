@@ -32,12 +32,21 @@ class LoginForm extends Component {
             <div id="container">
               <div className="login">
               <form onSubmit={this.handleSubmit}>
+            <div className="col-1-2">
             <input type="text" placeholder="name" /><br/>
             <input type="text" placeholder="email" /><br/>
             <input type="text" placeholder="password" /><br/>
-            <button type="Login">Login</button>
-            <button type="SignUp">Sign up</button>
+          </div>
+          <div className="col-1-2">
+            <div id="spacing">
+            <button id="btn" type="Login">Login</button>
+            </div>
+
+            <div id="spacing">
+            <button id="btn" type="SignUp">Sign up</button><br></br>
             <FbLoginButton />
+          </div>
+        </div>
             </form>
                 </div>
 

@@ -58,8 +58,8 @@ class QuizForm extends React.Component {
                   <input placeholder="opt4" name="opt4" onChange={(e) => this.setValue(e)} />
               </div>
               <div>
-                  <button onClick={() => this.createQuizQuestion()}>Add Question</button>
-                  <button onClick={() => this.createTest()}>Add Test</button>
+                  <button id="addQ" onClick={() => this.createQuizQuestion()}>Add Question</button>
+                  <button id="addT" onClick={() => this.createTest()}>Add Test</button>
               </div>
             </div>
           </div>

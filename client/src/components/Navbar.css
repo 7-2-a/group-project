@@ -7,9 +7,8 @@
 
 .Title{
   text-align: center;
-  font-size: 300px;
   color: #F159FF;
-  font: 220px 'Monoton', cursive;
+  font: 180px 'Monoton', cursive;
   text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
 }
 .MakeQuiz{
@@ -18,7 +17,14 @@
 }
 
 #gly{
-  font-size: 30px;
+  font-size: 25px;
   color: #435155;
   padding: 15px 30px 0px 15px;
+}
+#gly:hover{
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  color: #ffffff !important;
+  background: #F159FF;
+  border-color: #F159FF !important;
+  transition: all 0.4s ease 0s;
 }
