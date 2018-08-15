@@ -20,7 +20,8 @@ passport.use(
     {
       clientID: keys.FbClientID,
       clientSecret: keys.FbClientSecret,
-      callbackURL: '/auth/facebook/callback'
+      callbackURL: '/auth/facebook/callback',
+      proxy: true
     },
     async (accessToken, refreshToken, public_profile, done) => {
       const existingUser = await User.findOne({
