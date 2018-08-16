@@ -7,12 +7,14 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 require('./models/User');
+require('./models/emailUser');
 require('./services/passport');
 
 
 //added by jowen
 const mongoose = require('mongoose');
 const quizs = require('./routes/api/quizs');
+const emailUsers = require('./routes/api/emailUsers')
 
 const app = express();
 
@@ -37,6 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/api/quizs', quizs);
+app.use('/api/emailUsers', emailUsers);
 
 // PRODUCTION ONLY
 app.get('*', (req, res) => {

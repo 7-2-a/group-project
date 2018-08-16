@@ -1,58 +1,61 @@
 import React, { Component } from 'react';
 import FbLoginButton from './FbLoginButton';
+import axios from 'axios'
 import "./LoginForm.css";
 
 
 class LoginForm extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-          name: "",
-          email: "",
-          password: ""
-        };
-      }
+  state = {}
 
-      validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0;
-      }
 
-      handleChange = event => {
-        this.setState({
-          [event.target.id]: event.target.value
-        });
-      }
+   setValue(e) {
+     this.setState({[e.target.name]: e.target.value})
+   }
 
-      handleSubmit = event => {
-        event.preventDefault();
-      }
-      render(){
-          return(
-            <div id="container">
-              <div className="login">
-              <form onSubmit={this.handleSubmit}>
-            <div className="col-1-2">
-            <input type="text" placeholder="name" /><br/>
-            <input type="text" placeholder="email" /><br/>
-            <input type="text" placeholder="password" /><br/>
-          </div>
+   register() {
+     axios.post('/api/emailUsers/register', this.state).then((res) => {
+       localStorage.setItem('token', res.data.token)
+       window.location.pathname = '/';
+     })
+     console.log(this.state)
+   }
+
+   login() {
+     axios.post('/api/emailUsers/login', this.state).then((res) => {
+       localStorage.setItem('token', res.data.token)
+       window.location.pathname = '/';
+     })
+   }
+
+
+    render(){
+        return(
+          <div id="container">
+            <div className="login">
+
           <div className="col-1-2">
-            <div id="spacing">
-            <button id="btn" type="Login">Login</button>
-            </div>
+          <input type="text" name="name" placeholder="name" onChange={(e) => this.setValue(e)}/><br/>
+          <input type="text" name= "email" placeholder="email" onChange={(e) => this.setValue(e)}/><br/>
+          <input type="text" name = "password" placeholder="password" onChange={(e) => this.setValue(e)}/><br/>
 
-            <div id="spacing">
-            <button id="btn" type="SignUp">Sign up</button><br></br>
-            <FbLoginButton />
-          </div>
         </div>
-            </form>
-                </div>
+        <div className="col-1-2">
+          <div id="spacing">
+          <button id="btn" type="Login" onClick={() => this.login()}>Login</button>
+          </div>
 
-            </div>
-          )
-      }
-  }
+          <div id="spacing">
+          <button id="btn" type="SignUp" onClick={() => this.register()} >Sign up</button><br></br>
+          <FbLoginButton />
+        </div>
+      </div>
+
+              </div>
+
+          </div>
+        )
+    }
+}
 
 export default LoginForm;
