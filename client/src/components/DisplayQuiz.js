@@ -22,14 +22,34 @@ state = {}
    })
  }
 
-
+submitQuiz(q) {
+  console.log(q)
+}
 
 buildGrade(e, answer, i) {
   if(e.target.value === answer) {
-    this.state.grade.push(1)
+    if(this.state.grade.length > 0) {
+      if(this.state.grade[i]){
+        let grade = this.state.grade;
+        grade[i] = 1;
+        this.setState({grade: grade});
+      }
+    } else {
+      this.state.grade.push(1);
+    }
     //this.setState({grade[i]: 1})
   } else {
-    this.state.grade.push(0)
+    if(this.state.grade.length > 0) {
+      if(this.state.grade[i]){
+        let badgrade = this.state.grade;
+        badgrade[i] = 0;
+        this.setState({grade: badgrade});
+      } else{
+        let firstbadgrade = this.state.grade;
+        firstbadgrade.push(0);
+      }
+
+    }
     //this.setState({grade[i]: 0})
   }
   console.log(i)
