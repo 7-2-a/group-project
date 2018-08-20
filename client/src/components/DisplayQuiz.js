@@ -13,13 +13,40 @@ state = {}
      console.log(res);
      this.setState({
        title: res.data[0].title,
-       questions: res.data[0].questions
+       questions: res.data[0].questions,
+       grade:[],
+       thegrade: ""
      })
    }).catch((err) => {
      console.log(err)
    })
  }
 
+submitQuiz(q) {
+  console.log(q)
+}
+
+buildGrade(e, answer, i) {
+  if(e.target.value === answer) {
+    this.state.grade.push(1)
+    //this.setState({grade[i]: 1})
+  } else {
+    this.state.grade.push(0)
+    //this.setState({grade[i]: 0})
+  }
+  console.log(i)
+  console.log(this.state.grade)
+}
+
+returnGrade() {
+  var total = 0;
+  for(let i = 0; i < this.state.grade.length; i++) {
+    total += this.state.grade[i]
+  }
+  var avg = ((total/this.state.grade.length) * 100) +"%" ;
+  console.log(avg)
+  this.setState({thegrade: avg})
+}
 
 
  render() {
@@ -36,15 +63,19 @@ state = {}
                {question.map((q, i) => (
                  <div key={i}>
                    <p className="Question">{q.question}?</p>
-                   <ul>
-                    <div className="options"><label>{q.opt1}<input className="opt1" value="" type="radio" /*checked={this.state.selectedOption === 'opt1'}*//></label></div><br/>
-                    <div className="options"><label>{q.opt2}<input className="opt2" value="" type="radio"/></label></div><br/>
-                    <div className="options"><label>{q.opt3}<input className="opt3" value="" type="radio"/></label></div><br/>
-                    <div className="options"><label>{q.opt4}<input className="opt4" value="" type="radio"/></label></div><br/>
-                   </ul>
+                   <select  name="userI" onChange={(e) => this.buildGrade(e, q.answer, i)}>
+                    <option name="blank" value="blank"></option>
+                    <option name="opt1" value={q.opt1}>{q.opt1}</option>
+                    <option name="opt2" value={q.opt2}>{q.opt2}</option>
+                    <option name="opt3" value={q.opt3}>{q.opt3}</option>
+                    <option name="opt4" value={q.opt4}>{q.opt4}</option>
+                   </select>
                  </div>
                ))}
+               <button onClick={() => this.returnGrade()}>Grade Test</button><br></br>
+               <span>{this.state.thegrade}</span>
              </div>
+
            ))}
          </div>
        )}
