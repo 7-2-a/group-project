@@ -22,9 +22,7 @@ state = {}
    })
  }
 
-submitQuiz(q) {
-  console.log(q)
-}
+
 
 buildGrade(e, answer, i) {
   if(e.target.value === answer) {
