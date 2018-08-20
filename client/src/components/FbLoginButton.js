@@ -5,7 +5,7 @@ class FbLoginButton extends Component {
     render() {
         return (
             <button>
-                <a href='/auth/facebook'>Login with Facebook</a>
+                <a href='http://localhost:5000/auth/facebook'>Login with Facebook</a>
             </button>
         )
     }
