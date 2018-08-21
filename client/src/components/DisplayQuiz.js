@@ -10,67 +10,44 @@ state = {}
 
  componentDidMount(){
    axios.get(`/api/quizs/${window.location.search.slice(4)}`).then((res) => {
-     console.log(res);
+
      this.setState({
        title: res.data[0].title,
        questions: res.data[0].questions,
-       grade:[],
+       grade: 0,
+       totalQuestions: 0,
        thegrade: ""
+     }, () => {
+
      })
    }).catch((err) => {
      console.log(err)
    })
  }
 
-submitQuiz(q) {
-  console.log(q)
-}
-
-buildGrade(e, answer, i) {
+buildGrade(e, answer) {
   if(e.target.value === answer) {
-    if(this.state.grade.length > 0) {
-      if(this.state.grade[i]){
-        let grade = this.state.grade;
-        grade[i] = 1;
-        this.setState({grade: grade});
-      }
-    } else {
-      this.state.grade.push(1);
-    }
-    //this.setState({grade[i]: 1})
+    this.setState({
+      grade: (this.state.grade + 1),
+      totalQuestions: (this.state.totalQuestions + 1)
+    })
   } else {
-    if(this.state.grade.length > 0) {
-      if(this.state.grade[i]){
-        let badgrade = this.state.grade;
-        badgrade[i] = 0;
-        this.setState({grade: badgrade});
-      } else{
-        let firstbadgrade = this.state.grade;
-        firstbadgrade.push(0);
-      }
-
-    }
-    //this.setState({grade[i]: 0})
+    this.setState({
+      totalQuestions: (this.state.totalQuestions + 1)
+    })
   }
-  console.log(i)
-  console.log(this.state.grade)
 }
 
 returnGrade() {
-  var total = 0;
-  for(let i = 0; i < this.state.grade.length; i++) {
-    total += this.state.grade[i]
-  }
-  var avg = ((total/this.state.grade.length) * 100) +"%" ;
-  console.log(avg)
-  this.setState({thegrade: avg})
+  let percentage = (this.state.grade / this.state.totalQuestions);
+  let total = `${(100 * percentage)}%`;
+  this.setState({
+    thegrade: total
+  })
 }
 
 
  render() {
-   console.log(this.state.title);
-   console.log(this.state.questions);
-
    return(
      <span>
        {(this.state.questions) && (
@@ -81,7 +58,7 @@ returnGrade() {
                {question.map((q, i) => (
                  <div key={i}>
                    <p className="Question">{q.question}?</p>
-                   <select  name="userI" onChange={(e) => this.buildGrade(e, q.answer, i)}>
+                   <select  name="userI" onChange={(e) => this.buildGrade(e, q.answer)}>
                     <option name="blank" value="blank"></option>
                     <option name="opt1" value={q.opt1}>{q.opt1}</option>
                     <option name="opt2" value={q.opt2}>{q.opt2}</option>
@@ -100,10 +77,6 @@ returnGrade() {
      </span>
    );
  }
-
-
 }
-
-
 
 export default DisplayQuiz;
